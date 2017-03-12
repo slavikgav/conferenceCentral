@@ -4,7 +4,7 @@ import com.google.devrel.training.conference.form.ProfileForm.TeeShirtSize;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
-
+@Entity
 // TODO indicate that this class is an Entity
 public class Profile {
 	String displayName;
@@ -12,6 +12,7 @@ public class Profile {
 	TeeShirtSize teeShirtSize;
 
 	// TODO indicate that the userId is to be used in the Entity's key
+	@Id
 	String userId;
     
     /**
@@ -28,6 +29,14 @@ public class Profile {
     	this.mainEmail = mainEmail;
     	this.teeShirtSize = teeShirtSize;
     }
+    
+    public void update(String displayName, TeeShirtSize teeShirtSize) {
+    	if (displayName != null)
+    		this.displayName = displayName;
+    	if (teeShirtSize != null)
+    		this.teeShirtSize = teeShirtSize;
+    }
+    	 
     
 	public String getDisplayName() {
 		return displayName;
